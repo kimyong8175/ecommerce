@@ -17,3 +17,19 @@
 에러: Request failed with status code 500
      AxiosError: Request failed with status code 500
 해결방법: const products = await Product.find({});
+
+3. cartItems 안 itemsPrice, shippingPrice, taxPrice and totalPrice가 NaN으로 저장됨
+이유: ProductScreen 컴포넌트 안에서 
+
+(ProductScreen.jsx)
+const [quantity, setQuantity] = useState(1);
+const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, quantity }));
+    navigate("/cart");
+  };
+
+(cartUtils.js)
+const itemsPrice = state.cartItems.reduce(
+    (acc, item) => acc + item.price * item.qty,
+    0
+  );

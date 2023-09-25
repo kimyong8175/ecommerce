@@ -27,12 +27,8 @@ const Header = () => {
                 <Nav.Link>
                   <FaShoppingCart /> Cart
                   {cartItems.length > 0 && (
-                    <Badge pill bg="success" style={{ marginLeft: "2px" }}>
-                      {cartItems.reduce((acc, cur) => {
-                        console.log(acc);
-                        console.log(cur);
-                        return acc + cur.quantity, 0;
-                      })}
+                    <Badge pill bg="success" style={{ marginLeft: "3px" }}>
+                      {cartItems.reduce((acc, cur) => acc + cur.qty, 0)}
                     </Badge>
                   )}
                 </Nav.Link>
