@@ -5,3 +5,11 @@ x = 8
 
 json web token
 store at the http-only-cookie
+
+errorMiddleware를 만든 이유:
+But the express default error handler returns an error in the HTML page. 
+To fix this, I'll add an error middleware in my app.
+
+Mongoose returns a promise in response
+For async/await we have to use a try/catch method but as I already have an error handler so I'll use express-async-handler package.
+This package will handle the exceptions inside of async express routes and pass them to my express error handlers.
