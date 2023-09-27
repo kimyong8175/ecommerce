@@ -1,3 +1,7 @@
 x = 8
 [...Array(x).keys()] 
 => [0, 1, 2, 3, 4, 5, 6, 7]
+
+
+json web token
+store at the http-only-cookie
