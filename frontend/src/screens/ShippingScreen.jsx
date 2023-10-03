@@ -22,6 +22,7 @@ const ShippingScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log("Shipping Submit");
     dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
   };
@@ -31,7 +32,7 @@ const ShippingScreen = () => {
       <CheckoutSteps step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
-        <Form.Group className="my-2" controlId="address">
+        <Form.Group className="my-1" controlId="address">
           <Form.Label>Address</Form.Label>
           <Form.Control
             type="text"
@@ -42,7 +43,7 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className="my-2" controlId="city">
+        <Form.Group className="my-1" controlId="city">
           <Form.Label>City</Form.Label>
           <Form.Control
             type="text"
@@ -53,7 +54,7 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className="my-2" controlId="postalCode">
+        <Form.Group className="my-1" controlId="postalCode">
           <Form.Label>Postal Code</Form.Label>
           <Form.Control
             type="text"
@@ -64,7 +65,7 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className="my-2" controlId="country">
+        <Form.Group className="my-1" controlId="country">
           <Form.Label>Country</Form.Label>
           <Form.Control
             type="text"
