@@ -49,7 +49,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
         {step4 ? (
           <LinkContainer to="/placeorder">
             <Nav.Link
-              className={pathname === "/placeolder" ? "activeLink" : null}
+              className={pathname === "/placeorder" ? "activeLink" : null}
             >
               Place Order
             </Nav.Link>
