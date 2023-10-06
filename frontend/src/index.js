@@ -16,14 +16,18 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import ProductListScreen from "./screens/admin/ProductListScreen.jsx";
 import CartScreen from "./screens/CartScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
 import ShippingScreen from "./screens/ShippingScreen.jsx";
 import PaymentScreen from "./screens/PaymentScreen.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import AdminRoute from "./components/AdminRoute.jsx";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen.jsx";
 import OrderScreen from "./screens/OrderScreen.jsx";
+import OrderListScreen from "./screens/admin/OrderListScreen.jsx";
+import ProfileScreen from "./screens/ProfileScreen.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +43,12 @@ const router = createBrowserRouter(
         <Route path="/payment" element={<PaymentScreen />} />
         <Route path="/placeorder" element={<PlaceOrderScreen />} />
         <Route path="/order/:id" element={<OrderScreen />} />
+        <Route path="/profile" element={<ProfileScreen />} />
+      </Route>
+
+      <Route path="" element={<AdminRoute />}>
+        <Route path="/admin/orderlist" element={<OrderListScreen />} />
+        <Route path="/admin/productlist" element={<ProductListScreen />} />
       </Route>
     </Route>
   )

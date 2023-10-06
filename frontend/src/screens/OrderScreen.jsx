@@ -1,14 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import {
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Form,
-  Button,
-  Card,
-} from "react-bootstrap";
+import { Row, Col, ListGroup, Image, Button, Card } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
@@ -18,7 +10,8 @@ import {
   useGetOrderDetailQuery,
   usePayOrderMutation,
   useGetPayPalClientIdQuery,
-} from "../slices/ordersSlice";
+  useDeliverOrderMutation,
+} from "../slices/ordersApiSlice";
 
 const OrderScreen = () => {
   const { id: orderId } = useParams();
@@ -30,6 +23,9 @@ const OrderScreen = () => {
   } = useGetOrderDetailQuery(orderId);
 
   const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
+
+  const [deliverOrder, { isLoading: loadingDeliver }] =
+    useDeliverOrderMutation();
 
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
@@ -99,6 +95,16 @@ const OrderScreen = () => {
         return orderID;
       });
   }
+
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success("Order delivered");
+    } catch (err) {
+      toast.error(err?.data?.message || err.message);
+    }
+  };
 
   return isLoading ? (
     <Loader />
@@ -192,19 +198,13 @@ const OrderScreen = () => {
                 </Row>
               </ListGroup.Item>
               {/* PAY ORDER PLACEHOLDER */}
-              {!order.isPaid && (
+              {!order.isPaid && !userInfo.isAdmin && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
                   {isPending ? (
                     <Loader />
                   ) : (
                     <div>
-                      {/* <Button
-                        onClick={onApproveTest}
-                        style={{ marginBottom: "10px" }}
-                      >
-                        Test Pay Order
-                      </Button> */}
                       <div>
                         <PayPalButtons
                           createOrder={createOrder}
@@ -216,7 +216,22 @@ const OrderScreen = () => {
                   )}
                 </ListGroup.Item>
               )}
-              {/* MARK AS DELIVERED PLACEHOLDER*/}
+              {/* MARK AS DELIVERED PLACEHOLDER */}
+              {loadingDeliver && <Loader />}
+              {userInfo &&
+                userInfo.isAdmin &&
+                order.isPaid &&
+                !order.isDelivered && (
+                  <ListGroup.Item>
+                    <Button
+                      type="button"
+                      className="btn btn-block"
+                      onClick={deliverOrderHandler}
+                    >
+                      Mark as delivered
+                    </Button>
+                  </ListGroup.Item>
+                )}
             </ListGroup>
           </Card>
         </Col>

@@ -9,7 +9,7 @@ export const getProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
-// @desc   Fetch Single product
+// @desc   Fetch single product
 // @route  GET /api/products/:id
 // @acces  Public
 export const getProductById = asyncHandler(async (req, res) => {
@@ -21,4 +21,24 @@ export const getProductById = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Resource not found");
   }
+});
+
+// @desc   Create a prodcut
+// @route  PSOT /api/products
+// @acces  Private/Admin
+export const createProduct = asyncHandler(async (req, res) => {
+  const product = new Product({
+    name: "Sample name",
+    price: 0,
+    user: req.user._id,
+    image: "/images/sample.jpg",
+    brand: "Sample brand",
+    category: "Sample category",
+    countInStock: 0,
+    numReviews: 0,
+    description: "Sample description",
+  });
+
+  const createdProduct = await product.save();
+  res.status(201).json(createdProduct);
 });
