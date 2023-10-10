@@ -34,3 +34,8 @@ const itemsPrice = state.cartItems.reduce(
     0
   );
 
+
+const product = await Product.findById(req.params._id); 와 router
+  .route("/:id").put(protect, admin, updateProduct);
+코드에서 controller의 _id 와 라우트의 id가 달라서 404 error가 뜸
+protect와 admin 미들웨어가 없어도 404가 뜸

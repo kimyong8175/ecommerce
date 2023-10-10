@@ -13,3 +13,11 @@ To fix this, I'll add an error middleware in my app.
 Mongoose returns a promise in response
 For async/await we have to use a try/catch method but as I already have an error handler so I'll use express-async-handler package.
 This package will handle the exceptions inside of async express routes and pass them to my express error handlers.
+
+select() => select() is a method of Mongoose that is used to select document fields that are to be returned in the query result. 
+It is used to include or exclude document fields that are returned from a Mongoose query. 
+The select() method performs what is called query projection.
+
+
+ex) select("-password") => exclude password
+ex) select("name email") => returns only name and email fields
