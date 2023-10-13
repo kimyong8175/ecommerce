@@ -16,12 +16,12 @@ import { toast } from "react-toastify";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Meta from "../components/Meta";
 import {
   useGetProductDetailQuery,
   useCreateReviewMutation,
 } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
-import Meta from "../components/Meta";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -70,6 +70,7 @@ const ProductScreen = () => {
 
   return (
     <>
+      <Meta title="Products" />
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>

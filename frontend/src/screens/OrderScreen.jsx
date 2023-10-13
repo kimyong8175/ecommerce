@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import Meta from "../components/Meta";
 import {
   useGetOrderDetailQuery,
   usePayOrderMutation,
@@ -60,7 +61,7 @@ const OrderScreen = () => {
   function onApprove(data, actions) {
     return actions.order.capture().then(async function (details) {
       try {
-        await payOrder({ orderId, details });
+        await payOrder({ orderId, details }).unwrap();
         refetch();
         toast.success("Payment successful");
       } catch (err) {
@@ -112,6 +113,7 @@ const OrderScreen = () => {
     <Message variant="danger" />
   ) : (
     <>
+      <Meta title="Order" />
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>

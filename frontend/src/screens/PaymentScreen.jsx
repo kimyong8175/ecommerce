@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
+import Meta from "../components/Meta";
 import { savePaymentMethod } from "../slices/cartSlice";
 
 const PaymentScreen = () => {
@@ -27,29 +28,32 @@ const PaymentScreen = () => {
   };
 
   return (
-    <FormContainer>
-      <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method</h1>
-      <Form onSubmit={submitHandler}>
-        <Form.Group>
-          <Form.Label as="legend">Select Method</Form.Label>
-          <Col>
-            <Form.Check
-              type="radio"
-              className="my-2"
-              label="PayPal of Credit Card"
-              name="paymentMethod"
-              value="PayPal"
-              onChange={(e) => setPaymentMethod(e.target.value)}
-              checked
-            ></Form.Check>
-          </Col>
-        </Form.Group>
-        <Button type="submit" variant="primary">
-          Continue
-        </Button>
-      </Form>
-    </FormContainer>
+    <>
+      <Meta title="Payment" />
+      <FormContainer>
+        <CheckoutSteps step1 step2 step3 />
+        <h1>Payment Method</h1>
+        <Form onSubmit={submitHandler}>
+          <Form.Group>
+            <Form.Label as="legend">Select Method</Form.Label>
+            <Col>
+              <Form.Check
+                type="radio"
+                className="my-2"
+                label="PayPal of Credit Card"
+                name="paymentMethod"
+                value="PayPal"
+                onChange={(e) => setPaymentMethod(e.target.value)}
+                checked
+              ></Form.Check>
+            </Col>
+          </Form.Group>
+          <Button type="submit" variant="primary">
+            Continue
+          </Button>
+        </Form>
+      </FormContainer>
+    </>
   );
 };
 
