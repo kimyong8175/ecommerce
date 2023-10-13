@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-const { PAYPAL_CLIENT_ID, PAYPAL_API_SECRET, PAYPAL_API_URL } = process.env;
+const { PAYPAL_CLIENT_ID, PAYPAL_APP_SECRET, PAYPAL_API_URL } = process.env;
 
 /**
  * Fetches an access token from the PayPal API.
@@ -12,7 +12,7 @@ const { PAYPAL_CLIENT_ID, PAYPAL_API_SECRET, PAYPAL_API_URL } = process.env;
  */
 async function getPayPalAccessToken() {
   // Authorization header requires base64 encoding
-  const auth = Buffer.from(PAYPAL_CLIENT_ID + ":" + PAYPAL_API_SECRET).toString(
+  const auth = Buffer.from(PAYPAL_CLIENT_ID + ":" + PAYPAL_APP_SECRET).toString(
     "base64"
   );
 
