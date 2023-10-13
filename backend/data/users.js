@@ -11,12 +11,12 @@ export const users = [
     name: "Yonghyun Kim",
     email: "yong@email.com",
     password: bcrypt.hashSync("123456", 10),
-    isAdmin: true,
+    isAdmin: false,
   },
   {
     name: "Hyunsung Kim",
     email: "hyunsung@email.com",
     password: bcrypt.hashSync("123456", 10),
-    isAdmin: true,
+    isAdmin: false,
   },
 ];
