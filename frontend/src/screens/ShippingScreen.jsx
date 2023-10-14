@@ -23,7 +23,6 @@ const ShippingScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Shipping Submit");
     dispatch(saveShippingAddress({ address, city, postalCode, country }));
     navigate("/payment");
   };
