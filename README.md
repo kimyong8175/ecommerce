@@ -2,7 +2,7 @@
 E-commerce project is built with MERN stack & Redux-toolkit
 
 ## 💻 프로젝트 소개
-![ecommerce-combined-v2](https://github.com/kimyong8175/ecommerce/assets/98473560/96d990f6-b885-4534-baa3-b3c0417a4e1e)
+![ecommerce-combined-v2](https://github.com/kimyong8175/ecommerce/assets/98473560/087b1033-8db5-4d5f-a621-c55817b98c8a)
 Demo: <a href='https://www.yongcommerce.com/'>www.yongcommerce.com</a>
 
 ## 🛠 Features(기능)
