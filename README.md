@@ -25,11 +25,12 @@ Demo: <a href='https://www.yongcommerce.com/'>www.yongcommerce.com</a>
 
 
 ## 🔐 Env Variables
+Rename the .env.example file to .env and add the following
 ```
 NODE_ENV = development
 PORT = 8080
 MONGO_URI = your mongodb uri
-JWT_SECRET = 'abc123'
+JWT_SECRET = your jwt secret
 PAYPAL_CLIENT_ID = your paypal client id
 PAGINATION_LIMIT = number you want
 PAYPAL_APP_SECRET=<your_paypal_secret>
